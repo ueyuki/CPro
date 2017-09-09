@@ -3,12 +3,26 @@ n = gets.chomp.to_i
 paper = []
 
 n.times do
-  a = gets.chomp
-  if paper.include?(a)
-    paper.delete(a)
-  else
-    paper << a
+  paper << gets.chomp
+end
+
+paper.sort!
+uniq = paper.uniq
+
+ans = 0
+k = 0
+
+uniq.each do |i|
+  num = 0
+
+  while i == paper[k] do
+    num += 1
+    k += 1
+  end
+
+  if num % 2 == 1
+    ans += 1
   end
 end
 
-puts paper.length
+puts ans
