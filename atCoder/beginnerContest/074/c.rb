@@ -49,7 +49,7 @@ water.each do |i|
       next
     end
     density = (k * 100) / (i + k).to_f
-    if sugarWater <= f && k <= limit && maxdensity < density
+    if sugarWater <= f && k <= limit && maxdensity <= density
       maxdensity = density
       ansSugarWater = sugarWater
       ansSugar = k
@@ -58,4 +58,3 @@ water.each do |i|
 end
  
 print("#{ansSugarWater}\s#{ansSugar}\n")
-
