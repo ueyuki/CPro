@@ -1,60 +1,29 @@
-a, b, c, d, e, f = gets.chomp.split.map(&:to_i)
- 
-a = 100 * a 
-b = 100 * b
- 
-sugar = []
-water = []
- 
-i = 0
- 
-while (a * i) < f
-  k = 0
-  while (b * k) < f
-    combiWater = (a * i) + (b * k)
-    if combiWater < f
-      water << combiWater
-    end
-    k += 1
-  end
-  i += 1
-end
- 
-i = 0
- 
-while (c * i) < f
-  k = 0
-  while (d * k) < f
-    combiSugar = (c * i) + (d * k)
-    if combiSugar < f
-      sugar << combiSugar
-    end
-    k += 1
-  end
-  i += 1
-end
- 
-water.sort!.uniq!
-sugar.sort!.uniq!
- 
-maxdensity = 0
-ansSugarWater = 0
-ansSugar = 0
- 
-water.each do |i|
-  sugar.each do |k|
-    sugarWater = i + k
-    limit = i / 100 * e
-    if i == 0
-      next
-    end
-    density = (k * 100) / (i + k).to_f
-    if sugarWater <= f && k <= limit && maxdensity <= density
-      maxdensity = density
-      ansSugarWater = sugarWater
-      ansSugar = k
+A, B, C, D, E, F = gets.chomp.split.map(&:to_i)
+
+maxDensity = 0
+ans = []
+
+0.upto(F/100) do |a|
+  0.upto(F/100) do |b|
+    w = a * A + b * B
+    water = w * 100
+    next if water > F
+    limit = w * E
+
+    0.upto(F/C) do |c|
+      0.upto(F/D) do |d|
+        sugar = c * C + d * D
+        sugarWater = water + sugar
+        next if sugarWater > F || sugarWater == 0
+        density = (sugar * 100) / sugarWater.to_f
+
+        if sugar <= limit && maxDensity <= density 
+          maxDensity = density
+          ans = [sugarWater, sugar]
+        end
+      end
     end
   end
 end
- 
-print("#{ansSugarWater}\s#{ansSugar}\n")
+
+puts ans.join(' ')
