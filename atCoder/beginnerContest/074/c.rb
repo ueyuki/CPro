@@ -1,14 +1,13 @@
 a, b, c, d, e, f = gets.chomp.split.map(&:to_i)
-
+ 
 a = 100 * a 
 b = 100 * b
-e = e * 100
-
+ 
 sugar = []
 water = []
-
+ 
 i = 0
-
+ 
 while (a * i) < f
   k = 0
   while (b * k) < f
@@ -20,9 +19,9 @@ while (a * i) < f
   end
   i += 1
 end
-
+ 
 i = 0
-
+ 
 while (c * i) < f
   k = 0
   while (d * k) < f
@@ -34,27 +33,29 @@ while (c * i) < f
   end
   i += 1
 end
-
+ 
 water.sort!.uniq!
 sugar.sort!.uniq!
-
-maxPar100 = 0
+ 
+maxdensity = 0
 ansSugarWater = 0
 ansSugar = 0
-
+ 
 water.each do |i|
   sugar.each do |k|
     sugarWater = i + k
+    limit = i / 100 * e
     if i == 0
       next
     end
-    par100 = ((k * 10000) / i).to_f
-    if sugarWater <= f && par100 <= e && maxPar100 < par100
-      maxPar100 = par100
+    density = (k * 100) / (i + k).to_f
+    if sugarWater <= f && k <= limit && maxdensity < density
+      maxdensity = density
       ansSugarWater = sugarWater
       ansSugar = k
     end
   end
 end
-
+ 
 print("#{ansSugarWater}\s#{ansSugar}\n")
+
