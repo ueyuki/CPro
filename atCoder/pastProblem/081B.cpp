@@ -21,7 +21,7 @@ int main()
     {
       if (A[k] % 2 == 0) 
       {
-        A[k] = A[k] / 2;
+        A[k] /= 2;
       }
       else
       {
