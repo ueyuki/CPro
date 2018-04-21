@@ -2,56 +2,17 @@
 using namespace std;
 
 int main() {
-  int a, b, c, ans = 0;
-  double x, y;
-  cin >> a >> b >> c >> x >> y;
+  int a, b, c, x, y;
+  scanf("%d %d %d %d %d", &a, &b, &c, &x, &y);
 
-  if ((a / 2 + b / 2) > c) {
-    if (a > (c * 2) && b > (c * 2)) {
-      while (1) {
-        if (x <= 0 && y <= 0) break;
-        x -= 0.5;
-        y -= 0.5;
-        ans += c;
-      }
-    }
-    else if (a > (c * 2)) {
-      while (1) {
-        if (x <= 0) break;
-        x -= 0.5;
-        y -= 0.5;
-        ans += c;
-      }
-    }
-    else if (b > (c * 2)) {
-      while (1) {
-        if (y <= 0) break;
-        x -= 0.5;
-        y -= 0.5;
-        ans += c;
-      }
-    }
-    else {
-      while (1) {
-        if (x <= 0 || y <= 0) break;
-        x -= 0.5;
-        y -= 0.5;
-        ans += c;
-      }
-    }
+  if (x > y) {
+    swap(x, y);
+    swap(a, b);
   }
 
-  while (1) {
-    if (x <= 0) break;
-    x -= 1;
-    ans += a;
-  }
-
-  while (1) {
-    if (y <= 0) break;
-    y -= 1;
-    ans += b;
-  }
+  int ans = min(a + b, c * 2) * x;
+  y -= x;
+  ans += min(b, c * 2) * y;
 
   printf("%d\n", ans);
 
