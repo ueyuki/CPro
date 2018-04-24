@@ -8,7 +8,7 @@ int main() {
   for (int k = 1; k <= n; k++) {
     string num = to_string(k);
     int sum = 0;
-    for (int l = 0; l < num.size(); l++) {
+    for (unsigned int l = 0; l < num.size(); l++) {
       sum += int(num[l] - '0');
     }
     if (sum >= a && sum <= b) ans += k;
