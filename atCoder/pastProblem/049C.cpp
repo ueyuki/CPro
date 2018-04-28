@@ -1,28 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+string divide[4] = {"dream", "dreamer", "erase", "eraser"};
+
 int main() {
   string s;
   cin >> s;
   int pos = 0;
 
-  while (1) {
-    if (pos >= (int)s.length()) break;
-    printf("%d", pos);
-    if ((int)s.find("dreamer", pos) == pos) {
-      pos += 7; 
-      continue;
+  reverse(s.begin(), s.end());
+  for (int k = 0; k < 4; k++) reverse(divide[k].begin(), divide[k].end());
+
+  while (pos < (int)s.length()) {
+    bool flag = false;
+    for (int k = 0; k < 4; k++) {
+      string d = divide[k];
+      if ((int)s.find(d, pos) == pos) {
+        pos += d.length();
+        flag = true;
+      }
     }
-    if ((int)s.find("dream", pos) == pos) {
-      pos += 5; continue;
-    }
-    if ((int)s.find("eraser", pos) == pos) { 
-      pos += 6; continue;
-    }
-    if ((int)s.find("erase", pos) == pos) {
-      pos += 5; continue;
-    }
-    break;
+    if (flag != true) break;
   }
 
   if (pos == (int)s.length()) cout << "YES" << endl;
