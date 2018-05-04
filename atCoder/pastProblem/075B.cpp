@@ -4,12 +4,10 @@ using namespace std;
 int main() {
   int h, w;
   cin >> h >> w;
-  string s[h][w];
+  string s[h];
 
   for (int k = 0; k < h; k++) {
-    for (int l = 0; l < w; l++) {
-      cin >> s[k][l];
-    }
+    cin >> s[k];
   }
 
   for (int k = 0; k < h; k++) {
@@ -21,11 +19,13 @@ int main() {
             if (k + m >= 0 && k + m <= h &&
                 l + n >= 0 && l + n <= w &&
                 s[k + m][l + n] == '#') count++;
+            s[k][l] = '0' + count;
           }
         }
       }
-      cout << s[k][l] << endl;
+      cout << s[k][l];
     }
+    cout << endl;
   }
 
 
