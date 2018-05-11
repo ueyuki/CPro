@@ -15,8 +15,7 @@ int main() {
     up_sum += t;
     uup.push_back(t);
   }
-  up_sum -= uup[0];
-  int ans = uup[0];
+  long long int ans = uup[0];
 
   ddown.push_back(0);
   for (int k = 0; k < n; k++) {
@@ -25,18 +24,26 @@ int main() {
     down_sum += t;
     ddown.push_back(t);
   }
-  down_sum -= ddown[(ddown.size() - 1)];
 
-  bool flag = false;
+  int diff;
+  int max_diff = -99;
+  int max_pos = 0;
   for (int k = 1; k < n; k++) {
-    if (down_sum > up_sum) flag = true; 
-    if (flag) ans += ddown[k];
-    if (!flag) ans += uup[k];
-    up_sum -= uup[k];
-    down_sum -= ddown[k];
+    up_sum += uup[k];
+    down_sum += ddown[k];
+    diff = up_sum - down_sum;
+    if (diff > max_diff) {
+      max_diff = diff;
+      max_pos = k;
+    }
   }
-  ans += ddown[(ddown.size() - 1)];
 
+  for (int k = 1; k < n; k++) {
+    if (max_pos < k) ans += ddown[k];
+    else ans += uup[k];
+  }
+  ans += ddown[(ddown.size()-1)];
   cout << ans << endl;
+
   return 0;
 }
