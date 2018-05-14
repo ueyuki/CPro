@@ -4,14 +4,13 @@ using namespace std;
 int main() {
   string s;
   int pos;
-  cin >> s;
-  cin >> pos;
+  cin >> s >> pos;
 
   vector<string> t;
 
   for (int k = 0; k < (int)s.size(); k++) {
-    for (int l = 0; l < 5; l++) {
-      t.push_back(s.substr(k, l+1));
+    for (int l = 1; l <= 5; l++) {
+      t.push_back(s.substr(k, l));
     }
   }
   sort(t.begin(), t.end());
