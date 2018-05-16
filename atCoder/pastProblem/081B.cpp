@@ -3,33 +3,26 @@ using namespace std;
 
 int main()
 {
-  vector<int> A;
-  int N, count = 0;
+  int n;
+  int ans = 0;
+  vector<int> a;
 
-  scanf("%d", &N);
-  for (int k = 0; k < N; k++)
-  {
-    int num;
-    
-    scanf("%d", &num);
-    A.push_back(num);
+  cin >> n;
+  for (int k = 0; k < n; k++) {
+    int t;
+    cin >> t;
+    a.push_back(t);
   }
 
-  while (1)
-  {
-    for (int k = 0; k < N; k++)
-    {
-      if (A[k] % 2 == 0) 
-      {
-        A[k] /= 2;
-      }
-      else
-      {
-        printf("%d\n", count);
+
+  while (1) {
+    for (int k = 0; k < n; k++) {
+      if (a[k] % 2 == 1) {
+        cout << ans << endl;
         return 0;
       }
+      a[k] /= 2;
     }
-    count++;
+    ans++;
   }
-
 }
