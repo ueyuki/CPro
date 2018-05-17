@@ -4,25 +4,17 @@ using namespace std;
 int main()
 {
   int a, b, c, x;
-  int s = 0, ans = 0;
+  int ans = 0;
+  cin >> a >> b >> c >> x;
 
-  scanf("%d %d %d %d", &a, &b, &c, &x);
-
-  for (int k = 0; k <= a; k++)
-  {
-    for (int i = 0; i <= b; i++)
-    {
-      for (int t = 0; t <= c; t++)
-      {
-        s = k * 500 + i * 100 + t * 50;
-        if (s == x)
-        {
-          ans++;
-        }
-      }
+  for (int k = 0; k <= a; k++) {
+    for (int l = 0; l <= b; l++) {
+      int t;
+      t = x - (500 * k + 100 * l);
+      if (t < 0) continue;
+      if (c >= (t / 50)) ans++;
     }
   }
 
-  printf("%d\n", ans);
-  return 0;
+  cout << ans << endl;
 }
