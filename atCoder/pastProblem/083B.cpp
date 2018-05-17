@@ -2,18 +2,18 @@
 using namespace std;
 
 int main() {
-  int n, a, b, ans = 0;
-  scanf("%d %d %d", &n, &a, &b);
+  int n, a, b;
+  int ans = 0;
 
-  for (int k = 1; k <= n; k++) {
-    string num = to_string(k);
-    int sum = 0;
-    for (unsigned int l = 0; l < num.size(); l++) {
-      sum += int(num[l] - '0');
+  cin >> n >> a >> b;
+  for (int k = n; k > 0; k--) {
+    int sum = 0, t = k;
+    while (t > 0) {
+      sum += t % 10;
+      t /= 10;
     }
     if (sum >= a && sum <= b) ans += k;
   }
 
-  printf("%d\n", ans);
-  return 0;
+  cout << ans << endl;
 }
