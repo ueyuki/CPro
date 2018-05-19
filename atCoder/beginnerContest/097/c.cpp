@@ -6,14 +6,17 @@ int main() {
   int pos;
   cin >> s >> pos;
 
-  vector<string> t;
+  vector<string> a;
 
   for (int k = 0; k < (int)s.size(); k++) {
     for (int l = 1; l <= 5; l++) {
-      t.push_back(s.substr(k, l));
+      a.push_back(s.substr(k, l));
     }
   }
-  sort(t.begin(), t.end());
-  unique(t.begin(), t.end());
-  cout << t[pos-1] << endl;
+  sort(a.begin(), a.end());
+  unique(a.begin(), a.end());
+
+  cout << a[pos-1] << endl;
+
+  return 0;
 }
