@@ -2,23 +2,22 @@
 using namespace std;
 
 int main() {
-  int alice = 0, bob = 0;
   int n;
-  vector<int> num;
+  vector<int> a;
 
-  scanf("%d", &n);
-
+  cin >> n;
   for (int k = 0; k < n; k++) {
     int t;
-    scanf("%d", &t);
-    num.push_back(t);
+    cin >> t;
+    a.push_back(t);
   }
 
-  sort(num.begin(), num.end(), greater<int>());
+  sort(a.begin(), a.end(), greater<int>());
 
+  int ans = 0;
   for (int k = 0; k < n; k++) {
-    k % 2 == 0 ? alice += num[k] : bob += num[k];
+    ans += (k % 2 == 0 ? a[k] : -a[k]);
   }
-  int ans = alice - bob;
-  printf("%d\n", ans);
+
+  cout << ans << endl;
 }
