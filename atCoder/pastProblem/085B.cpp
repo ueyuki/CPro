@@ -2,19 +2,17 @@
 using namespace std;
 
 int main() {
-  int n, ans = 0;
+  int n;
   vector<int> d;
 
-  scanf("%d", &n);
-
+  cin >> n;
   for (int k = 0; k < n; k++) {
     int t;
-    scanf("%d", &t);
-    if (find(d.begin(), d.end(), t) == d.end()) {
-      d.push_back(t);
-      ans++;
-    }
+    cin >> t;
+    d.push_back(t);
   }
 
-  printf("%d\n", ans);
+  sort(d.begin(), d.end());
+  d.erase(unique(d.begin(), d.end()), d.end());
+  cout << d.size() << endl;
 }
