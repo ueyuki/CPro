@@ -2,16 +2,16 @@
 using namespace std;
 
 int main() {
-  int n, y;
-  int l = 0, m = 0, o = 0;
+  int n, sum;
+  int x = 0, y = 0, z = 0;
 
-  scanf("%d %d", &n, &y);
+  cin >> x >> y >> z;
 
-  for (l = 0; l <= y / 10000; l++) {
-    for (m = 0; m <= (y - (10000 * l)) / 5000; m++) {
-      o = (y - (10000 * l + 5000 * m)) / 1000;
-      if ((m + l + o) == n) {
-        printf("%d %d %d\n", l, m, o);
+  for (x = 0; x <= sum / 10000; x++) {
+    for (y = 0; y <= (sum - (10000 * x)) / 5000; y++) {
+      z = (sum - (10000 * x + 5000 * y)) / 1000;
+      if ((x + y + z) == n) {
+        cout << x << y << z;
         return 0;
       } 
     }
