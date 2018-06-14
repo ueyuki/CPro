@@ -4,27 +4,24 @@ using namespace std;
 int main() {
   int n;
   cin >> n;
-  int count = 0;
-  int six = 46656, nine = 59049;
+  int ans = 100000;
+  int six = 0, nine = 0;
 
-  while (n != 0) {
-    while (1) {
-      if (six <= n) {
-        break;
-      }
-      six /= 6;
-    } 
-    while (1) {
-      if (nine <= n) {
-        break;
-      }
-      nine /= 9;
-    } 
-    if (n > 11 && n < 15) n -= six;
-    else if (nine >= six) n -= nine;
-    else n -= six;
-    count++;
+  for (int k = 0; k <= n; k++) {
+    int a = k;
+    while (a > 0) {
+      six += a % 6;
+      a /= 6;
+    }
+    int b = n - k;
+    while (b > 0) {
+      nine += b % 9;
+      b /= 9;
+    }
+    ans = min(ans, nine + six);
+    nine = 0;
+    six = 0;
   }
-
-  cout << count << endl;
+  cout << ans << endl;
+  return 0;
 }
