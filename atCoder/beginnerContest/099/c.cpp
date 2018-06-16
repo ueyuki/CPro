@@ -12,13 +12,16 @@ int main() {
     while (a > 0) {
       six += a % 6;
       a /= 6;
+      cout << "six: " << six << endl;
     }
     int b = n - k;
     while (b > 0) {
       nine += b % 9;
       b /= 9;
+      cout << "nine: " << nine << endl;
     }
     ans = min(ans, nine + six);
+    cout << ans << endl;
     nine = 0;
     six = 0;
   }
