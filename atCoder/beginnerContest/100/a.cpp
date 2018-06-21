@@ -5,6 +5,6 @@ int main() {
   int a, b;
   cin >> a >> b;
 
-  if (a > 8 || b > 8) cout << ":(" << endl;
-  else cout << "Yay!" << endl;
+  cout << ((a > 8 | b > 8) ? ":(" : "Yay!") << endl;
+  return 0;
 }
