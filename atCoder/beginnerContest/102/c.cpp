@@ -6,26 +6,23 @@ int abs(int x) {
 }
 
 int main() {
-  int n;
+  long long int n;
   cin >> n;
-  vector<int> aa;
-  int min = 1000000000;
+  vector<long long int> aa;
 
   for (int k = 1; k <= n; k++) {
-    int t;
+    long long int t;
     cin >> t;
     aa.push_back(t - k);
   }
 
-  int ave = accumulate(aa.begin(), aa.end(), 0) / n;
-  
-  for (int k = ave - 5; k < ave + 5; k++) {
-    int res = 0;
-    for (int l = 0; l < n; l++) {
-      res += abs(aa[l] - k);
-    }
-    if (min > res) min = res;
-  }
+  sort(aa.begin(), aa.end());
+  long long int median = aa[n / 2];
+  //int median = (n % 2 == 0 ? (aa[(n - 1) / 2] + aa[n / 2]) / 2 : aa[(n - 1) / 2]);
 
-  cout << min << endl;
+  long long int res = 0;
+  for (long long int k = 0; k < n; k++) {
+    res += abs(aa[k] - median);
+  }
+  cout << res << endl;
 }
